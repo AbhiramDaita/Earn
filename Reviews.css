@@ -73,3 +73,18 @@
     font-size:18px;
     font-family: 'Lato',sans-serif;
 }
+
+.continue{
+    background-color: #85586F;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    width:150px;
+    height:30px;
+    cursor: pointer;
+    font-family: 'Lato',sans-serif;
+    font-weight: bold;
+    margin-top:30px;
+    margin-bottom:20px;
+    margin-left:30%;
+}

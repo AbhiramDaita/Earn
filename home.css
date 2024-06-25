@@ -10,7 +10,7 @@
     font-family: 'Lato',sans-serif;
     cursor: pointer;
     transition: all ease 300ms;
-    padding:5px;
+    padding:7px;
     border-radius: 10px;
 }
 
@@ -70,3 +70,44 @@
     color: #F8ECD1;
 }
 
+.logout{
+    display:none;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #f0f9ff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    animation: slideIn 0.5s ease-in-out forwards;
+    animation-fill-mode: forwards;
+  }
+  .alert.show {
+    visibility: visible;
+    opacity: 1; /* Animate visibility and opacity on show */
+  }
+
+
+  .alert.success {
+    background-color: #d4ffdf;
+    border-color: #c3ffd9;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+  }

@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="alert success">Project Submitted!</div>
         <div class="NavBar">
             <div class="NavItem" onclick="location.href='/Home.html'">
                 Home
@@ -18,6 +19,9 @@
             </div>
             <div class="NavItem" onclick="location.href='/Projects.html'">
                 Projects
+            </div>
+            <div class="NavItem logout">
+                Logout
             </div>
         </div>
         <div class="FormHolder">
@@ -31,14 +35,67 @@
                         Please enter project details to register a project.
                     </div>
                 </div>
-                <form>
+
                     <label for="titleInput">Enter Project Title</label>
                     <input id="titleInput" type="text"/>
                     <label for="descriptionInput">Enter Project Description</label>
                     <textarea id="descriptionInput" cols="43" rows="9"></textarea>
                     <button type="submit" class="btnLogin">Submit</button>
-                </form>
             </div>
         </div>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+            import { getAuth} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'
+            import { getFirestore, doc, setDoc} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'
+            const firebaseConfig = {
+                apiKey: "AIzaSyD47bB5rv0nnbBxDQ6ideeEpkjaHbyjzeo",
+                authDomain: "projectreview-ed3ec.firebaseapp.com",
+                databaseURL: "https://projectreview-ed3ec-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "projectreview-ed3ec",
+                storageBucket: "projectreview-ed3ec.appspot.com",
+                messagingSenderId: "800175800322",
+                appId: "1:800175800322:web:1063ea1b842e1254dbe71b"
+            };
+
+            const user = JSON.parse(localStorage.getItem("myCookie"));
+            
+            const app = initializeApp(firebaseConfig);
+            
+            const db = getFirestore(app);
+            const id = Math.floor(Math.random() * 1000000000).toString();
+            const alertElement = document.querySelector('.alert');
+            const title = document.getElementById("titleInput");
+            const description = document.getElementById("descriptionInput");
+            const btn = document.getElementsByClassName("btnLogin")[0]
+            btn.addEventListener("click",()=>{
+                setDoc(doc(db,"projects",id),{
+                    project_id:id,
+                    project_title:title.value,
+                    project_description:description.value,
+                    user_id:user.uid,
+                })
+                .then(()=>{
+                    alertElement.classList.add('show');
+                    window.location.replace("/Projects.html")
+                })
+            })
+
+                    
+            const logout = document.getElementsByClassName("logout")[0]
+            
+            if(user != null){
+                logout.style.display="block";
+            } else{
+                logout.style.disply="none"
+            }
+
+            logout.addEventListener("click",()=>{
+                localStorage.removeItem("myCookie");
+                window.location.replace("/Home.html");
+                
+            })
+
+        </script>
+
     </body>
 </html>

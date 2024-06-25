@@ -29,6 +29,7 @@
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
     padding:20px;
     border-radius: 10px;
+    margin-bottom:20px;
 }
 
 .ProjectsHolderTitle{
@@ -39,3 +40,9 @@
     margin-bottom: 50px;
 }
 
+.CardId{
+    font-size:15px;
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
+    margin-bottom: 10px;
+}

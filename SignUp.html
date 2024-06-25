@@ -66,7 +66,9 @@
                         displayName:userName.value
                     })
                     .then(()=>{
-                        console.log(auth.currentUser)
+                        localStorage.setItem("myCookie",JSON.stringify({displayname:auth.currentUser.displayName , uid: auth.currentUser.uid}))
+                        window.location.replace("/Home.html");
+                     
                     })
                 })
             })

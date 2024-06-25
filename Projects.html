@@ -22,6 +22,9 @@
                     <div class="NavItem selected" onclick="location.href='/Projects.html'" >
                         Projects
                     </div>
+                    <div class="NavItem logout">
+                        Logout
+                    </div>
                 </div>
                 <div class="ProjectsHolder">
                     <div>
@@ -29,20 +32,72 @@
                             Submitted Projects
                         </div>
                         <div class="ProjectsCards">
-                            <div class="ProjectCard">
-                                <div class="CardTitle">
-                                    The Big Bang
-                                </div>
-                                <div class="CardContent">
-                                    This project is about the killing of thousands of people in the name of physics.
-                                </div>
-                                <div class="CardReviewsAction" onclick="location.href='/Reviews.html'">
-                                    Show Reviews
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
         </div>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+            import { getAuth} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'
+            import { getFirestore, collection, query, getDocs} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'
+            const firebaseConfig = {
+                apiKey: "AIzaSyD47bB5rv0nnbBxDQ6ideeEpkjaHbyjzeo",
+                authDomain: "projectreview-ed3ec.firebaseapp.com",
+                databaseURL: "https://projectreview-ed3ec-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "projectreview-ed3ec",
+                storageBucket: "projectreview-ed3ec.appspot.com",
+                messagingSenderId: "800175800322",
+                appId: "1:800175800322:web:1063ea1b842e1254dbe71b"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+
+            const db = getFirestore(app);
+
+            const q = query(collection(db,"projects"));
+
+            const cardsHolder = document.getElementsByClassName("ProjectsCards")[0];
+            
+     
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc)=>{
+                cardsHolder.innerHTML += `
+                <div class="ProjectCard">
+                    <div class="CardId">
+                        ${doc.data().project_id}
+                    </div>
+                    <div class="CardTitle">
+                        ${doc.data().project_title}
+                    </div>
+                    <div class="CardContent">
+                        ${doc.data().project_description}
+                    </div>
+                    <div class="CardReviewsAction" onclick="location.href='/Reviews.html?cardId=${doc.data().project_id}';">
+                        Show Reviews
+                    </div>
+                </div>
+                `
+            })
+
+                 
+            const logout = document.getElementsByClassName("logout")[0]
+
+            const user = JSON.parse(localStorage.getItem("myCookie"))
+
+            if(user != null){
+    
+                logout.style.display="block";
+            } else{
+          
+                logout.style.disply="none"
+            }
+
+            logout.addEventListener("click",()=>{
+                localStorage.removeItem("myCookie");
+                window.location.replace("/Home.html");
+            })
+
+        </script>
     </body>
 </html>

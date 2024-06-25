@@ -20,14 +20,47 @@
                         Please enter your credentials to continue.
                     </div>
                 </div>
-                <form>
-                    <label for="nameInput">Enter Username</label>
-                    <input id="nameInput" type="text"/>
+                    <label for="emailInput">Enter email</label>
+                    <input id="emailInput" type="text"/>
                     <label for="passwordInput">Enter Password</label>
                     <input id="passwordInput" type="password"/>
                     <button type="submit" class="btnLogin">Login</button>
-                </form>
             </div>
         </div>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+            import { getAuth , signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'
+            import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'
+            const firebaseConfig = {
+                apiKey: "AIzaSyD47bB5rv0nnbBxDQ6ideeEpkjaHbyjzeo",
+                authDomain: "projectreview-ed3ec.firebaseapp.com",
+                databaseURL: "https://projectreview-ed3ec-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "projectreview-ed3ec",
+                storageBucket: "projectreview-ed3ec.appspot.com",
+                messagingSenderId: "800175800322",
+                appId: "1:800175800322:web:1063ea1b842e1254dbe71b"
+            };
+
+            const email = document.getElementById("emailInput")
+            const password = document.getElementById("passwordInput")
+
+            
+            const app = initializeApp(firebaseConfig);
+            
+            const auth = getAuth(app);
+
+            const btn = document.getElementsByClassName("btnLogin")[0]
+
+            btn.addEventListener("click",()=>{
+       
+                signInWithEmailAndPassword(auth,email.value,password.value)
+                .then((userCred)=>{
+                    localStorage.setItem("myCookie",JSON.stringify({displayname:auth.currentUser.displayName , uid: auth.currentUser.uid}))
+                    window.location.replace("/Home.html");
+                })
+            })
+
+
+        </script>
     </body>
 </html>

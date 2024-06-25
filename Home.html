@@ -19,6 +19,9 @@
                 <div class="NavItem" onclick="location.href='/Projects.html'">
                     Projects
                 </div>
+                <div class="NavItem logout">
+                    Logout
+                </div>
             </div>
             <div class="HomeTitle">
                 <div class="HomeTitleContent">
@@ -35,5 +38,26 @@
                 </div>
             </div>
         </div>
+        <script type="module">
+        
+            const logout = document.getElementsByClassName("logout")[0]
+
+            const actions = document.getElementsByClassName("HomeActions")[0]
+            const user = JSON.parse(localStorage.getItem("myCookie"))
+            if(user != null){
+                actions.style.display = "none";
+                logout.style.display="block";
+            } else{
+                actions.style.display = "flex";
+                logout.style.disply="none"
+            }
+
+            logout.addEventListener("click",()=>{
+                localStorage.removeItem("myCookie");
+                window.location.replace("/Home.html");
+            })
+            
+            
+        </script>
     </body>
 </html>

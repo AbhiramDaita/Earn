@@ -28,10 +28,10 @@
             <div class="ProjectReviewsHolder">
                 <div>
                     <div class="ProjectReviewsTitle">
-                        The Big Bang
+                   
                     </div>
                     <div class="ProjectReviewsCap">
-                        This project is based on killing in the name of physics.
+                        
                     </div>
                     <div class="WriteReview">
                         <div class="ReviewInput">
@@ -45,27 +45,92 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
+                        <button class="continue" type="button">Submit</button>
                     </div>
                     <div class="ReviewsTitle">
                         Reviews
                     </div>
                     <div class="ReviewsHolder">
-                        <div class="Review">
-                            <div>
-                                <div class="ReviewTitle">
-                                    Ritviz
-                                </div>
-                                <div class="ReviewRating">
-                                    1.0 / 5.0
-                                </div>
-                            </div>
-                            <div class="ReviewContent">
-                                This project is shit
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+            import { getAuth} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'
+            import { getFirestore, doc, setDoc, getDoc, collection, getDocs,addDoc} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'
+            const firebaseConfig = {
+                apiKey: "AIzaSyD47bB5rv0nnbBxDQ6ideeEpkjaHbyjzeo",
+                authDomain: "projectreview-ed3ec.firebaseapp.com",
+                databaseURL: "https://projectreview-ed3ec-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "projectreview-ed3ec",
+                storageBucket: "projectreview-ed3ec.appspot.com",
+                messagingSenderId: "800175800322",
+                appId: "1:800175800322:web:1063ea1b842e1254dbe71b"
+            };
+            
+            const app = initializeApp(firebaseConfig);
+            
+            const reviewId = Math.floor(Math.random() * 1000000000).toString();
+            const user = JSON.parse(localStorage.getItem("myCookie"));
+            const review = document.getElementById("reviewInput")
+            const rating = document.getElementById("ratingSelect")
+            const urlParams = new URLSearchParams(window.location.search)
+            const projectID = urlParams.get('cardId')
+            const projectTitle = document.getElementsByClassName("ProjectReviewsTitle")[0];
+            const projectDes = document.getElementsByClassName("ProjectReviewsCap")[0];
+
+
+            
+
+            const db = getFirestore(app);
+
+            const button = document.getElementsByClassName("continue")[0]
+
+            button.addEventListener("click",()=>{
+               addDoc(collection(db,"projects",projectID,"reviews"),{
+                review_id : reviewId,
+                user_id : user.uid,
+                review : review.value,
+                rating : rating.value,
+                user_name : user.displayname,
+               })
+               .then(()=>{
+                    window.location.reload();
+               })
+            });
+
+            const docRef = doc(db, "projects",projectID);
+            const docSnap = await getDoc(docRef);
+            const data = docSnap.data();
+            const reviewsHolder = document.getElementsByClassName("ReviewsHolder")[0]
+
+            projectTitle.innerHTML = data.project_title
+            projectDes.innerHTML = data.project_description
+
+            const querySnapshot = await getDocs(collection(db,"projects",projectID,"reviews"));
+
+            querySnapshot.forEach((doc)=>{
+                reviewsHolder.innerHTML += `
+                <div class="Review">
+                    <div>
+                        <div class="ReviewTitle">
+                            ${doc.data().user_name}
+                        </div>
+                        <div class="ReviewRating">
+                            ${doc.data().rating}/ 5.0
+                        </div>
+                    </div>
+                    <div class="ReviewContent">
+                        ${doc.data().review}
+                    </div>
+                </div>`
+            })
+
+
+            
+
+        </script>
     </body>
 </html>
