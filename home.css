@@ -89,6 +89,7 @@
     visibility: hidden;
     animation: slideIn 0.5s ease-in-out forwards;
     animation-fill-mode: forwards;
+    font-family:'Lato',sans-serif;
   }
   .alert.show {
     visibility: visible;
