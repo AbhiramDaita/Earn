@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Project</title>
+        <link href="Login.css" rel="stylesheet" type="text/css">
+        <link href="home.css" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="NavBar">
+            <div class="NavItem" onclick="location.href='/Home.html'">
+                Home
+            </div>
+            <div class="NavItem selected">
+                Register Project
+            </div>
+            <div class="NavItem" onclick="location.href='/Projects.html'">
+                Projects
+            </div>
+        </div>
+        <div class="FormHolder">
+            <div>
+
+                <div class="FormHolderContent">
+                    <div class="FormHolderTitle">
+                        Register a project
+                    </div>
+                    <div class="FormHolderCap">
+                        Please enter project details to register a project.
+                    </div>
+                </div>
+                <form>
+                    <label for="titleInput">Enter Project Title</label>
+                    <input id="titleInput" type="text"/>
+                    <label for="descriptionInput">Enter Project Description</label>
+                    <textarea id="descriptionInput" cols="43" rows="9"></textarea>
+                    <button type="submit" class="btnLogin">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+.ProjectsHolder{
+    display:flex;
+    justify-content: center;
+}
+
+.CardTitle{
+    font-size: 25px;
+    font-family: 'Lato',sans-serif;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.CardContent{
+    font-size:20px;
+    font-family:'Lato',sans-serif;
+    font-weight: 450;
+    margin-bottom: 30px;
+}
+
+.CardReviewsAction{
+    font-family: 'Lato',sans-serif;
+    font-size: 18px;
+    color:#85586F;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ProjectCard{
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    padding:20px;
+    border-radius: 10px;
+}
+
+.ProjectsHolderTitle{
+    font-size:25px;
+    font-weight: 450;
+    font-family: 'Lato',sans-serif;
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+

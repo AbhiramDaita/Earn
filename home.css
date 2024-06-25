@@ -1,0 +1,72 @@
+.NavBar{
+    display: flex;
+    justify-content: center;
+    margin-top:40px;
+}
+
+.NavItem{
+    margin-right: 50px;
+    font-size: 19px;
+    font-family: 'Lato',sans-serif;
+    cursor: pointer;
+    transition: all ease 300ms;
+    padding:5px;
+    border-radius: 10px;
+}
+
+.NavItem:hover{
+    background-color: #DEB6AB;
+    font-weight: bold;
+}
+
+.selected{
+    background-color: #DEB6AB;
+    font-weight: bold;
+}
+
+.HomeTitle{
+    display: flex;
+    justify-content: center;
+    margin-top:200px;
+}
+
+.HomeContent{
+    font-size:25px;
+    font-weight: bold;
+    font-family: 'Lato',sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.HomeCap{
+    font-size:20px;
+    font-weight: 300;
+    font-family: 'Lato',sans-serif;
+    margin-bottom: 20px;
+}
+
+.HomeActions{
+    display: flex;
+    justify-content: center;
+}
+
+.toLogin,.toSignUp{
+    margin-right:30px;
+    font-size: 20px;
+    font-family: 'Lato',sans-serif;
+    width:150px;
+    height: 40px;
+    border:none;
+    cursor: pointer;
+    border-radius:8px;
+    background-color: #F8ECD1;
+    color:#85586F;
+    font-weight: bold;
+    transition: all ease 200ms;
+}
+
+.toLogin:hover, .toSignUp:hover{
+    background-color: #85586F;
+    color: #F8ECD1;
+}
+

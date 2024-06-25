@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Sign-Up
+        </title>
+        <link href="Login.css" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  
+    </head>
+    <body>
+       
+        <div class="FormHolder">
+            <div>
+                <div class="FormHolderContent">
+                    <div class="FormHolderTitle">
+                        Sign-Up
+                    </div>
+                    <div class="FormHolderCap">
+                        Please enter your credentials to continue.
+                    </div>
+                </div>
+                <div>
+                    <label for="nameInput">Enter Username</label>
+                    <input id="nameInput" type="text"/>
+                    <label for="emailInput">Enter Email</label>
+                    <input id="emailInput" type="email"/>
+                    <label for="passwordInput">Enter Password</label>
+                    <input id="passwordInput" type="password"/>
+                    <button type="button" class="btnSignUp">Sign-Up</button>
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+            import { getAuth , createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'
+            import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js'
+            const firebaseConfig = {
+                apiKey: "AIzaSyD47bB5rv0nnbBxDQ6ideeEpkjaHbyjzeo",
+                authDomain: "projectreview-ed3ec.firebaseapp.com",
+                databaseURL: "https://projectreview-ed3ec-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "projectreview-ed3ec",
+                storageBucket: "projectreview-ed3ec.appspot.com",
+                messagingSenderId: "800175800322",
+                appId: "1:800175800322:web:1063ea1b842e1254dbe71b"
+            };
+
+            const userName = document.getElementById("nameInput")
+            const email = document.getElementById("emailInput")
+            const password = document.getElementById("passwordInput")
+
+            
+            const app = initializeApp(firebaseConfig);
+            
+            const auth = getAuth(app)
+
+            const button = document.getElementsByClassName("btnSignUp")[0]
+            button.addEventListener("click",()=>{
+                createUserWithEmailAndPassword(auth,email.value,password.value)
+                .then((userCred)=>{
+                    console.log(userCred);
+                })
+            })
+          </script>
+    </body>
+</html>

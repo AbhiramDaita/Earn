@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Reviews
+        </title>
+        <link rel="stylesheet" href="Reviews.css" type="text/css">
+        <link rel="stylesheet" href="home.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="ReviewsPage">
+            <div class="NavBar">
+                <div class="NavItem" onclick="location.href='/Home.html'">
+                    Home
+                </div>
+  
+                <div class="NavItem" onclick="location.href='/RegisterProject.html'">
+                    Register Project
+                </div>
+                <div class="NavItem selected" onclick="location.href='/Projects.html'">
+                    Projects
+                </div>
+            </div>
+
+            <div class="ProjectReviewsHolder">
+                <div>
+                    <div class="ProjectReviewsTitle">
+                        The Big Bang
+                    </div>
+                    <div class="ProjectReviewsCap">
+                        This project is based on killing in the name of physics.
+                    </div>
+                    <div class="WriteReview">
+                        <div class="ReviewInput">
+                            <label for="reviewInput" class="reviewLabel">Write a Review</label>
+                            <input id="reviewInput" type="text">
+                            <select id="ratingSelect">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ReviewsTitle">
+                        Reviews
+                    </div>
+                    <div class="ReviewsHolder">
+                        <div class="Review">
+                            <div>
+                                <div class="ReviewTitle">
+                                    Ritviz
+                                </div>
+                                <div class="ReviewRating">
+                                    1.0 / 5.0
+                                </div>
+                            </div>
+                            <div class="ReviewContent">
+                                This project is shit
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
